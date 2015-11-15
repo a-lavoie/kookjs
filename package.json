@@ -1,0 +1,26 @@
+{
+  "name": "Dexto-coding-standards",
+  "version": "1.0.0",
+  "description": "## Activity: Coding",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/a-lavoie/Dexto-coding-standards.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/a-lavoie/Dexto-coding-standards/issues"
+  },
+  "homepage": "https://github.com/a-lavoie/Dexto-coding-standards",
+  "devDependencies": {
+    "grunt-run": "^0.5.2"
+  }
+}

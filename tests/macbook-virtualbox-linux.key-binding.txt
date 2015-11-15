@@ -1,0 +1,14 @@
+Ctrl:  Control
+Alt:   Alt
+Shif:  Shift
+
+C-A-arrows:       Change linux workspace
+
+C-A-Tab:          Navigate/view linux application running instances
+   C-A-arrays     Switch to application navigation 
+
+C-S-arrow.down:   Zooom out of this Mac workspace
+C-S-arrow.up:     Zooom in of this Mac workspace
+
+
+
