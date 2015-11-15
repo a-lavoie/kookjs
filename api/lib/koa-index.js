@@ -15,6 +15,10 @@ var main = function* () {
    router.delete('aname', '/echo', service.delete);
 
    app.use(router.routes());
+   app.use( function* (){
+      this.body = 'Hello';
+      console.log("Passed by");
+   });
    app.listen(3000);
 } 
    

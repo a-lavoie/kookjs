@@ -37,26 +37,6 @@ var getUrl = function(){
 console.log("Running on server " + httpRequest.hostname); 
  
 
-//describe('GET /ping', function(){  
-//    it('respond ok', function(done){
-//	httpRequest.path = "/ping";
-//	httpRequest.method = "POST";
-//        var url = 'http://' + httpRequest.hostname 
-//            + ":" + httpRequest.port  
-//            + httpRequest.path;
-//        var req = request.get(url,
-//	    function(error, res, body){
-//		if (error){
-//		    console.log(error);   
-//		} else {
-//                    assert.equal(200, res.statusCode);
-//		    var o = JSON.parse(body);
-//		}
-//                done();
-//	 });
-//    });
-//});
-
 describe('GET /echo', function(){  
     it('respond ok', function(done){
         this.timeout(10000);
