@@ -3,16 +3,20 @@ var koa = require('koa');
 var ccors = require('koa-cors');
 var Router = require('koa-router');
 var createService = require('./microservice');
+var createActivity = require('./activity');
 
 var app = koa();  
 var main = function* () {
    var service = yield createService();
+   var activity = yield createActivity();
    var router = new Router();
-   router.get('aname', '/echo', service.get);
-   router.post('aname', '/echo', service.post);
-   router.put('aname', '/echo', service.put);
-   router.patch('aname', '/echo', service.patch);
-   router.delete('aname', '/echo', service.delete);
+   router.get('getEcho', '/echo', service.get);
+   router.post('postEcho', '/echo', service.post);
+   router.put('putEcho', '/echo', service.put);
+   router.patch('patchEcho', '/echo', service.patch);
+   router.delete('deleteEcho', '/echo', service.delete);
+
+   router.get('/getActivity', '/activity', activity.get);
 
    app.use(router.routes());
    app.use( function* (){

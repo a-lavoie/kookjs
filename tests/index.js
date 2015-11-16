@@ -11,7 +11,7 @@ var httpRequest = {
     hostname: "192.168.2.33",
     path: "/ping", 
     port: 3000,   
-    method: "GET",    
+    method: "GET",     
     headers: {  
        'Content-Type': 'application/json',
        'Authorization': '...'     
@@ -127,6 +127,26 @@ describe('DELETE /echo', function(){
 	 });
     });
 });
+
+
+describe('GET /activity', function(){  
+    it('respond ok', function(done){
+        this.timeout(10000);
+	httpRequest.path = "/activity?trace=on&activityName=activity3";
+	httpRequest.method = "GET";
+        var req = request.get(getUrl(), 
+	    function(error, res, body){
+		if (error){ 
+		    console.log(error);   
+		} else { 
+                    assert.equal(200, res.statusCode);
+		    var o = JSON.parse(body);
+		}
+                done();
+	 });
+    });
+});
+
 
 
 
