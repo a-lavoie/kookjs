@@ -26,8 +26,6 @@
     "koa-cors": "~0.0.14",
     "koa-router": "~4.3.2",
     "lodash": "^3.10.1",
-    "lodash.get": "^3.7.0",
-    "lodash.has": "^3.2.1",
     "validator": "^4.2.1"
   }
 }

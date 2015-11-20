@@ -1,11 +1,10 @@
-var _get = require('lodash.get');
-var _has = require('lodash.has');
+var _ = require('lodash');
 
 module.exports = function(config){ 
-   if (!_has(config, "tag")){
+   if (!_.has(config, "tag")){
       console.log("No config provided");
-   }
-   var tag = _get(config, "tag", "");
+   } 
+   var tag = _.get(config, "tag", "");
 
    return function* (next) {
      console.log("[" + tag + "]-" + "Console middleware started");

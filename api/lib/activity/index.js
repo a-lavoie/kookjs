@@ -33,6 +33,26 @@ module.exports = function* (config) {
     }
   ];
 
+  // activity.name(""),
+  // grabQueryContext.name("")
+  //   .in("xx": "this.request.query.trace")
+  //   .out("yy")
+  //   .ready(),
+  // middleware2
+  //   .in("")
+
+
+//  var grabQueryContext = function* (next) {
+//    activity.in(xxList);     // this.state.grabQueryContext.in.xxList is set
+//    ...
+//    
+//    activity.out("yy", oo);
+//    yield next;
+//  };
+
+
+
+
   //var middlewareA = function *(next){
   //   console.log("Into middlewareA");
   //   yield next;

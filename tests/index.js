@@ -137,7 +137,7 @@ describe('GET /activity', function(){
         var req = request.get(getUrl(), 
 	    function(error, res, body){
 		if (error){ 
-		    console.log(error);   
+		    console.log(error);    
 		} else { 
                     assert.equal(200, res.statusCode);
 		    var o = JSON.parse(body);
