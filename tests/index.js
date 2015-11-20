@@ -132,7 +132,7 @@ describe('DELETE /echo', function(){
 describe('GET /activity', function(){  
     it('respond ok', function(done){
         this.timeout(10000);
-	httpRequest.path = "/activity?trace=on&activityName=activity3";
+	httpRequest.path = "/activity?trace=on&ttag=act1,go";
 	httpRequest.method = "GET";
         var req = request.get(getUrl(), 
 	    function(error, res, body){
@@ -143,7 +143,7 @@ describe('GET /activity', function(){
 		    var o = JSON.parse(body);
 		}
                 done();
-	 });
+	 }); 
     });
 });
 

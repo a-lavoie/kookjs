@@ -24,6 +24,7 @@ module.exports = function* (config) {
     yield next;
   };
 
+
   var get = [
     createActivityContext,
     grabQueryContext,
@@ -33,6 +34,16 @@ module.exports = function* (config) {
     }
   ];
 
+  var m = [
+    mogger({tag: "act1"}),
+    createInOut
+  ];
+
+  return {
+    get: compose(m.concat(get))
+  };
+};
+ 
   // activity.name(""),
   // grabQueryContext.name("")
   //   .in("xx": "this.request.query.trace")
@@ -58,14 +69,3 @@ module.exports = function* (config) {
   //   yield next;
   //};
 
-  var m = [
-    
-    mogger({tag: "activity"}),
-    createInOut
-  ];
-
-  return {
-    get: compose(m.concat(get))
-  };
-};
- 
