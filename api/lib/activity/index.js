@@ -1,25 +1,32 @@
 var compose = require('koa-compose');
-var mogger = require('../middlewares/mogger');
+var Mogger = (require('../middlewares/mogger'))("No config");
+
+var g = new Mogger({tag: "Activities"});
 
 module.exports = function* (config) {
 
   var createInOut = function* (next) {
     this.state.in = [];
     this.state.out = [];
-    console.log("in and out created");
+    g.log("in and out created");
     yield next;
   };
 
 
   var createActivityContext = function* (next) {
     this.state.trace = true;
+    yield next; 
+  };
+
+  var initNameSpace = function* (next) {
+    this.state.ns = {};
     yield next;
   };
 
   var grabQueryContext = function* (next) {
-    console.log("Activity created");
-    console.log("trace=" + JSON.stringify(this.request.query) );
-    console.log("activity=" + JSON.stringify(this.request.query) );
+    g.log("Activity created");
+    g.log("trace=" + JSON.stringify(this.request.query) );
+    g.log("activity=" + JSON.stringify(this.request.query) );
     this.state.activityName = this.request.query.activityName;
     yield next;
   };
@@ -29,13 +36,17 @@ module.exports = function* (config) {
     createActivityContext,
     grabQueryContext,
     function* (next) {
-       yield next;
        this.body = {};
+       yield next;
+    },
+    function* (next){
+       this.body.trace = g.serialize();
     }
   ];
 
   var m = [
-    mogger({tag: "act1"}),
+    initNameSpace,
+    //log.middleware(),
     createInOut
   ];
 

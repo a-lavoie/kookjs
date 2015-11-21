@@ -1,10 +1,13 @@
 var compose = require('koa-compose');
+var Mogger = (require('../middlewares/mogger'))("No config");
+
+var g = new Mogger({tag: "Activities"});
 
 module.exports = function* (config) {
 
   var get = [
     function* (next) {
-      console.log("First middleware");
+      g.log("GET middleware");
       yield next;
     },
     function* (next) {
@@ -15,7 +18,7 @@ module.exports = function* (config) {
 
   var post = [
     function* (next) {
-      console.log("First middleware");
+      g.log("POST middleware");
       yield next;
     },
     function* (next) {
@@ -26,7 +29,7 @@ module.exports = function* (config) {
 
   var put = [
     function* (next) {
-      console.log("First middleware");
+      g.log("PUT middleware");
       yield next;
     },
     function* (next) {
@@ -37,7 +40,7 @@ module.exports = function* (config) {
 
   var patch = [
     function* (next) {
-      console.log("First middleware");
+      g.log("PATCH middleware");
       yield next;
     },
     function* (next) {
@@ -48,7 +51,7 @@ module.exports = function* (config) {
 
   var del = [
     function* (next) {
-      console.log("First middleware");
+      g.log("DELETE middleware");
       yield next;
     },
     function* (next) {

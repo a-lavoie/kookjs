@@ -3,6 +3,7 @@ var express = require('express');
 var assert = require('assert');
 var request = require('request');
 var http = require('http');
+var Mogger = (require('../api/lib/middlewares/mogger'))("No config");
  
 var sessionToken = "";
 var httpRequest = {  
@@ -23,7 +24,7 @@ var getPort = function(){
       var separator = ":";
       return separator + httpRequest.port;
    }
-   return "";
+   return ""; 
 };
 
 var getUrl = function(){
@@ -96,40 +97,40 @@ describe('PATCH /echo', function(){
     it('respond ok', function(done){
         this.timeout(10000);
 	httpRequest.path = "/echo";
-	httpRequest.method = "PATCH";
+	httpRequest.method = "PATCH"; 
         var req = request.patch(getUrl(), 
 	    function(error, res, body){
 		if (error){
 		    console.log(error);   
-		} else { 
+		} else {  
                     assert.equal(200, res.statusCode);
 		    var o = JSON.parse(body);
 		}
                 done();
 	 });
-    });
+    }); 
 });
-
+ 
 describe('DELETE /echo', function(){  
     it('respond ok', function(done){
-        this.timeout(10000);
+        this.timeout(10000);   
 	httpRequest.path = "/echo";
 	httpRequest.method = "DELETE";
-        var req = request.del(getUrl(), 
+        var req = request.del(getUrl(),   
 	    function(error, res, body){
 		if (error){
 		    console.log(error);   
 		} else { 
                     assert.equal(200, res.statusCode);
-		    var o = JSON.parse(body);
-		}
-                done();
+		    var o = JSON.parse(body); 
+		} 
+                done(); 
 	 });
-    });
+    });  
 });
 
-
-describe('GET /activity', function(){  
+  
+describe('GET /activity', function(){    
     it('respond ok', function(done){
         this.timeout(10000);
 	httpRequest.path = "/activity?trace=on&ttag=act1,go";
@@ -141,13 +142,16 @@ describe('GET /activity', function(){
 		} else { 
                     assert.equal(200, res.statusCode);
 		    var o = JSON.parse(body);
-		}
+                    var trace = JSON.parse(o.trace);
+                    var g = new Mogger(trace);
+                    console.log(trace);   
+		} 
                 done();
-	 }); 
+	 });  
     });
 });
-
-
+ 
+ 
 
 
 

@@ -4,6 +4,9 @@ var ccors = require('koa-cors');
 var Router = require('koa-router');
 var createService = require('./microservice');
 var createActivity = require('./activity');
+var Mogger = (require('./middlewares/mogger'))("No config");
+
+var g = new Mogger({tag: "ApiFacade"});
 
 var app = koa();  
 var main = function* () {
@@ -20,8 +23,7 @@ var main = function* () {
 
    app.use(router.routes());
    app.use( function* (){
-      this.body = 'Hello';
-      console.log("Passed by");
+      g.log("Running anonymous middleware");
    });
    app.listen(3000);
 } 
