@@ -10,11 +10,11 @@ LogEntry.prototype.print = function(){
   return "[" + this.timestamp + "] " + this.entry;
 }
 
-var Mogger = function(tag){
-  if (!_.has(tag, "tag")){
+var Mogger = function(config){
+  if (!_.has(config, "tag")){
     console.log("No config provided");
   } 
-  this.tag = _.get(tag, "tag", "server");
+  var tag = _.get(tag, "tag", "server");
   this.tag = tag;
   this.logs = [];
   loggers[tag] = _.get(loggers, tag, "server");

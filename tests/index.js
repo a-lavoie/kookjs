@@ -149,7 +149,7 @@ describe('GET /activity', function(){
                 done();
 	 });  
     });
-});
+}); 
  
  
 
