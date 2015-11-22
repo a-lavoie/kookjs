@@ -129,10 +129,10 @@ describe('DELETE /echo', function(){
     });  
 });
 
-  
-describe('GET /activity', function(){    
+   
+describe('GET /activity', function(){     
     it('respond ok', function(done){
-        this.timeout(10000);
+        this.timeout(10000); 
 	httpRequest.path = "/activity?trace=on&ttag=act1,go";
 	httpRequest.method = "GET";
         var req = request.get(getUrl(), 
@@ -140,19 +140,22 @@ describe('GET /activity', function(){
 		if (error){ 
 		    console.log(error);    
 		} else { 
-                    assert.equal(200, res.statusCode);
-		    var o = JSON.parse(body);
-                    var trace = JSON.parse(o.trace);
-                    var g = new Mogger(trace);
-                    console.log(trace);   
-		} 
-                done();
-	 });  
+                    assert.equal(200, res.statusCode); 
+		    var o = JSON.parse(body); 
+                    var g = new Mogger();
+                    g.deserialize(o.trace);
+                    var out = g.print();
+                    console.log("act1 finding", out.search("act1"));
+                    assert.equal(true, (out.search("act1") > 0));
+                    console.log(out);
+		}  
+                done();  
+	 });   
     });
 }); 
+  
  
  
-
 
 
 
